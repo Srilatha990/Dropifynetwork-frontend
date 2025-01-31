@@ -21,7 +21,7 @@ const MobileFooter = () => {
       <div className="flex flex-col h-full justify-between align-middle bg-white rounded cursor-pointer overflow-y-scroll flex-grow scrollbar-hide w-full">
         <CategoryDrawer className="w-6 h-6 drop-shadow-xl" />
       </div>
-      <footer className="lg:hidden fixed z-30 bottom-0 flex items-center justify-between w-full h-16 px-3 sm:px-10" style={{ backgroundColor: "#0b5052" }}>
+      <footer className="lg:hidden fixed z-30 bottom-0 flex items-center justify-between w-full h-16 px-3 sm:px-10" style={{ backgroundColor: "#fa559c" }}>
         <button
           aria-label="Bar"
           onClick={toggleCategoryDrawer}
@@ -77,12 +77,12 @@ const MobileFooter = () => {
             </Link>
           )}
         </button> */}
-        <button
+        {/* <button
           className="pr-5 text-white text-2xl font-bold"
           aria-label="Alert"
         >
           <FiBell className="w-6 h-6 drop-shadow-xl" />
-        </button>
+        </button> */}
       </footer>
     </>
   );

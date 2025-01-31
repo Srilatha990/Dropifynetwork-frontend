@@ -23,7 +23,7 @@ const Category = () => {
   return (
     <div className="flex flex-col w-full h-full bg-white cursor-pointer scrollbar-hide">
       {categoryDrawerOpen && (
-        <div className="w-full flex justify-between items-center h-16 px-6 py-4 text-white border-b border-gray-100" style={{ backgroundColor: "#0b5052" }}>
+        <div className="w-full flex justify-between items-center h-16 px-6 py-4 text-white border-b border-gray-100" style={{ backgroundColor: "#fa559c" }}>
           <h2 className="font-semibold font-serif text-lg m-0 text-heading flex align-center">
             <Link href="/" className="mr-10">
               {/* <Image
