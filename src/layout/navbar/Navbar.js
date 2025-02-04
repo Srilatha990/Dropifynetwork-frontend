@@ -1,3 +1,6 @@
+
+
+
 import { useContext, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -19,12 +22,12 @@ import { SidebarContext } from "@context/SidebarContext";
 const Navbar = () => {
   const { t } = useTranslation();
   const [searchText, setSearchText] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(false); // Track the focus state
   const { toggleCartDrawer } = useContext(SidebarContext);
   const { totalItems } = useCart();
   const router = useRouter();
 
   const userInfo = getUserSession();
-
   const { storeCustomizationSetting } = useGetSetting();
 
   const handleSubmit = (e) => {
@@ -45,14 +48,10 @@ const Navbar = () => {
       <div className="sticky top-0 z-20" style={{ backgroundColor: "#fa559c" }}>
         <div className="max-w-screen-2xl mx-auto px-3 sm:px-10">
           <div className="top-bar h-20 flex items-center justify-between py-4 mx-auto">
-            <Link
-              href="/"
-              className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block"
-            >
+            <Link href="/" className="mr-3 lg:mr-12 xl:mr-12 hidden md:hidden lg:block">
               <div className="relative">
-                {/* You can use your custom logo or just display text as a placeholder */}
                 <h1 style={{ fontSize: "28px", fontWeight: "bold", color: "white" }}>
-                DropifyNetwork
+                  DropifyNetwork
                 </h1>
               </div>
             </Link>
@@ -68,15 +67,19 @@ const Navbar = () => {
                         onChange={(e) => setSearchText(e.target.value)}
                         value={searchText}
                         className="form-input w-full pl-5 appearance-none transition ease-in-out border text-input text-sm font-sans rounded-md min-h-10 h-10 duration-200 bg-white focus:ring-0 outline-none border-none focus:outline-none placeholder-gray-500 placeholder-opacity-75"
-                        // placeholder={t(`common:search-placeholder`)}
                         placeholder="Search for products...."
+                        style={{
+                          width: isSearchFocused ? "100%" : "0", // Dynamically change width when focused
+                          transition: "width 0.3s ease-in-out", // Smooth width transition
+                        }}
                       />
                     </label>
 
                     {/* Updated button with background color for the box */}
                     <button
                       aria-label="Search"
-                      type="submit"
+                      type="button" // Prevent form submission
+                      onClick={() => setIsSearchFocused(true)} // Set focus on the input
                       className="outline-none absolute top-0 right-0 end-0 w-12 md:w-14 h-full flex items-center justify-center transition duration-200 ease-in-out"
                       style={{
                         backgroundColor: "#c71c77",
@@ -90,53 +93,7 @@ const Navbar = () => {
               </div>
             </div>
             <div className="hidden md:hidden md:items-center lg:flex xl:block absolute inset-y-0 right-0 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-              {/* <button
-                className="pr-5 text-white text-2xl font-bold"
-                aria-label="Alert"
-              >
-                <FiBell className="w-6 h-6 drop-shadow-xl" />
-              </button> */}
-              {/* <button
-                aria-label="Total"
-                onClick={toggleCartDrawer}
-                className="relative px-5 text-white text-2xl font-bold"
-              >
-                <span className="absolute z-10 top-0 right-0 inline-flex items-center justify-center p-1 h-5 w-5 text-xs font-medium leading-none text-red-100 transform -translate-x-1/2 -translate-y-1/2 bg-red-500 rounded-full">
-                  {totalItems}
-                </span>
-                <FiShoppingCart className="w-6 h-6 drop-shadow-xl" />
-              </button> */}
-
-              {/* <button
-                className="pl-5 text-white text-2xl font-bold"
-                aria-label="Login"
-              >
-                {userInfo?.image ? (
-                  <Link
-                    href="/user/dashboard"
-                    className="relative top-1 w-6 h-6"
-                  >
-                    <Image
-                      width={29}
-                      height={29}
-                      src={userInfo?.image}
-                      alt="user"
-                      className="bg-white rounded-full"
-                    />
-                  </Link>
-                ) : userInfo?.name ? (
-                  <Link
-                    href="/user/dashboard"
-                    className="leading-none font-bold font-serif block"
-                  >
-                    {userInfo?.name[0]}
-                  </Link>
-                ) : (
-                  <Link href="/auth/login">
-                    <FiUser className="w-6 h-6 drop-shadow-xl" />
-                  </Link>
-                )}
-              </button> */}
+              {/* Remaining buttons and logic */}
             </div>
           </div>
         </div>
@@ -149,6 +106,5 @@ const Navbar = () => {
 };
 
 export default dynamic(() => Promise.resolve(Navbar), { ssr: false });
-
 
 

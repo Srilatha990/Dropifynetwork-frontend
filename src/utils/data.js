@@ -40,29 +40,24 @@ const pages = [
   //   icon: FiHelpCircle,
   // },
   {
-    title: "about-us-page",
+    title: "about-us",
     href: "/about-us",
     icon: FiUsers,
   },
   {
-    title: "contact-us-page",
+    title: "contact-us",
     href: "/contact-us",
     icon: FiPhoneIncoming,
   },
   {
-    title: "privacy-policy-page",
+    title: "privacy-policy",
     href: "/privacy-policy",
     icon: FiPocket,
   },
   {
-    title: "terms-and-conditions-page",
+    title: "terms-and-conditions",
     href: "/terms-and-conditions",
     icon: FiFileText,
-  },
-  {
-    title: "not-found-page",
-    href: "/404",
-    icon: FiAlertCircle,
   },
 ];
 

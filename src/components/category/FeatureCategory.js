@@ -40,39 +40,38 @@
 //           {data[0]?.children?.map((category, i) => (
 //             <div className="flex justify-center items-center" key={i}>
 //               <div className="flex flex-col items-center justify-center">
-//                 {/* Category Image with hover effect */}
-//                 <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-32 md:h-32 mb-3 bg-white border-4 border-gray-100 rounded-full flex justify-center items-center shadow-lg group hover:scale-110 hover:shadow-2xl transition-all duration-300 ease-in-out">
-//                   {category.icon ? (
-//                     <Image
-//                       src={category?.icon}
-//                       alt="category"
-//                       width={120}
-//                       height={120}
-//                       className="object-cover rounded-full"
-//                     />
-//                   ) : (
-//                     <Image
-//                       src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-//                       alt="category"
-//                       width={120}
-//                       height={120}
-//                       className="object-cover rounded-full"
-//                     />
-//                   )}
-//                 </div>
+//                 {/* Only Category Image */}
+//                 {category.icon ? (
+//                   <Image
+//                     src={category?.icon}
+//                     alt="category"
+//                     width={160} // Consistent image width
+//                     height={160} // Consistent image height
+//                     className="object-cover" // Ensures the image covers the container area
+//                   />
+//                 ) : (
+//                   <Image
+//                     src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+//                     alt="category"
+//                     width={160} // Consistent image width
+//                     height={160} // Consistent image height
+//                     className="object-cover" // Ensures the image covers the container area
+//                   />
+//                 )}
 
 //                 {/* Category Name */}
-//                 <h3
+//                 <h4
 //                   onClick={() =>
 //                     handleCategoryClick(
 //                       category._id,
 //                       showingTranslateValue(category?.name)
 //                     )
 //                   }
-//                   className="text-sm sm:text-md md:text-lg text-gray-800 font-semibold leading-tight text-center cursor-pointer  transition duration-300"
+//                   className="text-sm sm:text-md md:text-md text-gray-800 font-semibold leading-tight text-center cursor-pointer transition duration-300"
+//                   style={{marginTop:"16px", fontSize:'15px'}}
 //                 >
 //                   {showingTranslateValue(category?.name)}
-//                 </h3>
+//                 </h4>
 
 //                 {/* Subcategories */}
 //                 <ul className="pt-1 mt-1 text-xs sm:text-sm md:text-base">
@@ -103,6 +102,14 @@
 // };
 
 // export default FeatureCategory;
+
+
+
+
+
+
+
+
 
 
 
@@ -147,24 +154,34 @@ const FeatureCategory = () => {
           {data[0]?.children?.map((category, i) => (
             <div className="flex justify-center items-center" key={i}>
               <div className="flex flex-col items-center justify-center">
-                {/* Only Category Image */}
-                {category.icon ? (
-                  <Image
-                    src={category?.icon}
-                    alt="category"
-                    width={160} // Consistent image width
-                    height={160} // Consistent image height
-                    className="object-cover" // Ensures the image covers the container area
-                  />
-                ) : (
-                  <Image
-                    src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
-                    alt="category"
-                    width={160} // Consistent image width
-                    height={160} // Consistent image height
-                    className="object-cover" // Ensures the image covers the container area
-                  />
-                )}
+                {/* Category Image with onClick handler */}
+                <div
+                  onClick={() =>
+                    handleCategoryClick(
+                      category._id,
+                      showingTranslateValue(category?.name)
+                    )
+                  }
+                  className="cursor-pointer"
+                >
+                  {category.icon ? (
+                    <Image
+                      src={category?.icon}
+                      alt="category"
+                      width={160} // Consistent image width
+                      height={160} // Consistent image height
+                      className="object-cover" // Ensures the image covers the container area
+                    />
+                  ) : (
+                    <Image
+                      src="https://res.cloudinary.com/ahossain/image/upload/v1655097002/placeholder_kvepfp.png"
+                      alt="category"
+                      width={160} // Consistent image width
+                      height={160} // Consistent image height
+                      className="object-cover" // Ensures the image covers the container area
+                    />
+                  )}
+                </div>
 
                 {/* Category Name */}
                 <h4
@@ -175,7 +192,7 @@ const FeatureCategory = () => {
                     )
                   }
                   className="text-sm sm:text-md md:text-md text-gray-800 font-semibold leading-tight text-center cursor-pointer transition duration-300"
-                  style={{marginTop:"16px", fontSize:'15px'}}
+                  style={{ marginTop: "16px", fontSize: "15px" }}
                 >
                   {showingTranslateValue(category?.name)}
                 </h4>
@@ -209,6 +226,3 @@ const FeatureCategory = () => {
 };
 
 export default FeatureCategory;
-
-
-
